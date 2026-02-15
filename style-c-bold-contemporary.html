@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Deaf Student Solutions | BSL Interpreting &amp; Student Support</title>
+<meta name="description" content="Deaf Student Solutions - Professional BSL interpreting, specialist support, and note-taking services for D/deaf and hard of hearing students in higher education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CSS RESET & CUSTOM PROPERTIES
+   ============================================ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --dark:#0f172a;
+  --dark-card:#1e293b;
+  --white:#fff;
+  --emerald:#059669;
+  --emerald-lt:#34d399;
+  --teal:#14b8a6;
+  --g100:#f1f5f9;
+  --g200:#e2e8f0;
+  --g400:#94a3b8;
+  --g500:#64748b;
+  --g600:#475569;
+  --g700:#334155;
+  --g900:#0f172a;
+  --fh:'Space Grotesk',sans-serif;
+  --fb:'DM Sans',sans-serif;
+  --tf:0.2s cubic-bezier(.4,0,.2,1);
+  --tm:0.35s cubic-bezier(.4,0,.2,1);
+  --ts:0.5s cubic-bezier(.4,0,.2,1)
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--fb);
+  color:var(--g700);
+  line-height:1.6;
+  background:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--fh);
+  line-height:1.15;
+  letter-spacing:-.02em
+}
+
+a{text-decoration:none;color:inherit;transition:color var(--tf)}
+img,svg{display:block;max-width:100%}
+ul{list-style:none}
+button,input,textarea,select{font-family:inherit;font-size:inherit;border:none;outline:none;background:none}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.section-dark{background:var(--dark);color:var(--white)}
+.section-white{background:var(--white);color:var(--g700)}
+.section-padding{padding:100px 0}
+
+.section-label{
+  font-family:var(--fh);
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--emerald);
+  margin-bottom:16px;
+  display:block
+}
+
+.section-heading{
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:700;
+  margin-bottom:20px
+}
+
+.section-subtext{
+  font-size:1.1rem;
+  line-height:1.7;
+  max-width:600px;
+  opacity:.8
+}
+
+/* ============================================
+   SKIP LINK (Accessibility)
+   ============================================ */
+.skip-link{
+  position:absolute;
+  top:-100%;
+  left:16px;
+  padding:12px 24px;
+  background:var(--emerald);
+  color:var(--white);
+  font-family:var(--fh);
+  font-weight:600;
+  border-radius:6px;
+  z-index:10000;
+  transition:top 0.2s
+}
+.skip-link:focus{top:16px}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:14px 32px;
+  font-family:var(--fh);
+  font-size:.95rem;
+  font-weight:600;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all var(--tm)
+}
+
+.btn-primary{
+  background:var(--emerald);
+  color:var(--white);
+  box-shadow:0 4px 15px rgba(5,150,105,.3)
+}
+
+.btn-primary:hover{
+  background:#047857;
+  transform:translateY(-2px);
+  box-shadow:0 0 30px rgba(5,150,105,0.5),0 6px 25px rgba(5,150,105,0.4)
+}
+
+.btn-outline-white{
+  border:2px solid rgba(255,255,255,.3);
+  color:var(--white)
+}
+
+.btn-outline-white:hover{
+  border-color:var(--white);
+  background:rgba(255,255,255,.05);
+  transform:translateY(-2px)
+}
+
+.btn svg{width:18px;height:18px;transition:transform var(--tf)}
+.btn:hover svg{transform:translateX(3px)}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  transition:all var(--tm)
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 0;
+  transition:padding var(--tm)
+}
+
+.header.scrolled{
+  background:rgba(15,23,42,.95);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.05)
+}
+
+.header.scrolled .header-inner{padding:14px 0}
+
+.logo{display:flex;align-items:center;gap:12px;z-index:1001}
+.logo svg{width:40px;height:40px}
+
+.logo-text{
+  font-family:var(--fh);
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:.08em
+}
+
+.logo-text span{color:var(--emerald)}
+
+.nav{display:flex;align-items:center;gap:36px}
+.nav-links{display:flex;align-items:center;gap:32px}
+
+.nav-link{
+  font-family:var(--fh);
+  font-size:.88rem;
+  font-weight:500;
+  color:rgba(255,255,255,.7);
+  position:relative;
+  padding:4px 0
+}
+
+.nav-link::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--emerald);
+  transition:width var(--tm)
+}
+
+.nav-link:hover{color:var(--white)}
+.nav-link:hover::after{width:100%}
+.nav .btn{padding:10px 24px;font-size:.85rem}
+
+/* ============================================
+   HAMBURGER & MOBILE MENU
+   ============================================ */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1001;
+  padding:4px;
+  background:none;
+  border:none
+}
+
+.hamburger span{
+  display:block;
+  width:28px;
+  height:2px;
+  background:var(--white);
+  transition:all var(--tm);
+  transform-origin:center
+}
+
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+.mobile-menu{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--dark);
+  z-index:999;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:32px;
+  opacity:0;
+  visibility:hidden;
+  transition:all var(--tm)
+}
+
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu .nav-link{font-size:1.5rem;color:rgba(255,255,255,.8)}
+.mobile-menu .btn{margin-top:16px;font-size:1rem;padding:14px 36px}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:var(--dark);
+  overflow:hidden
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(5,150,105,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(5,150,105,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 70%)
+}
+
+.hero-gradient{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%,rgba(5,150,105,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%,rgba(20,184,166,.06) 0%,transparent 70%);
+  pointer-events:none
+}
+
+.hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+
+.hero-shape{position:absolute;border:1px solid rgba(5,150,105,.1)}
+
+.hero-shape-1{
+  width:300px;height:300px;
+  top:10%;right:5%;
+  transform:rotate(45deg);
+  border-radius:4px;
+  animation:rotate-slow 25s linear infinite
+}
+
+.hero-shape-2{
+  width:200px;height:200px;
+  bottom:15%;right:15%;
+  transform:rotate(20deg);
+  border-color:rgba(20,184,166,.08);
+  animation:rotate-slow 20s linear infinite reverse
+}
+
+.hero-shape-3{
+  width:150px;height:150px;
+  top:30%;left:-40px;
+  transform:rotate(-15deg);
+  border-color:rgba(5,150,105,.06)
+}
+
+.hero-shape-4{
+  width:80px;height:80px;
+  bottom:25%;left:10%;
+  transform:rotate(30deg);
+  border-color:rgba(20,184,166,.1);
+  background:rgba(5,150,105,.02)
+}
+
+@keyframes rotate-slow{
+  from{transform:rotate(45deg)}
+  to{transform:rotate(405deg)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+  padding:120px 0 80px
+}
+
+.hero-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 16px;
+  background:rgba(5,150,105,.1);
+  border:1px solid rgba(5,150,105,.2);
+  border-radius:100px;
+  font-family:var(--fh);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--emerald-lt);
+  margin-bottom:32px
+}
+
+.hero-label-dot{
+  width:6px;height:6px;
+  background:var(--emerald);
+  border-radius:50%;
+  animation:pd 2s ease-in-out infinite
+}
+
+@keyframes pd{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(1.5)}
+}
+
+.hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:24px;
+  letter-spacing:-.03em;
+  line-height:1.05
+}
+
+.hero h1 .accent{
+  display:block;
+  background:linear-gradient(135deg,var(--emerald-lt),var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+
+.hero-sub{
+  font-size:1.2rem;
+  color:var(--g400);
+  line-height:1.7;
+  margin-bottom:40px;
+  max-width:540px
+}
+
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+
+.hero-stats{
+  display:flex;
+  gap:48px;
+  margin-top:64px;
+  padding-top:40px;
+  border-top:1px solid rgba(255,255,255,.06)
+}
+
+.hero-stat-num{
+  font-family:var(--fh);
+  font-size:2rem;
+  font-weight:700;
+  color:var(--white)
+}
+
+.hero-stat-label{
+  font-size:.85rem;
+  color:var(--g500);
+  margin-top:4px
+}
+
+/* Scroll indicator */
+.scroll-indicator{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:var(--g500);
+  font-size:.75rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-family:var(--fh);
+  animation:fl 3s ease-in-out infinite
+}
+
+.scroll-indicator-line{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,var(--emerald),transparent)
+}
+
+@keyframes fl{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(8px)}
+}
+
+/* Floating hero elements */
+@keyframes float-bob{
+  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
+  50%{transform:translateY(-25px) rotate(var(--rot,0deg))}
+}
+
+.floating-el{
+  position:absolute;
+  z-index:3;
+  pointer-events:none;
+  font-family:var(--fh);
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border-radius:100px;
+  box-shadow:0 0 20px rgba(5,150,105,0.3)
+}
+
+.floating-el-1{
+  top:18%;right:8%;
+  padding:8px 18px;
+  background:rgba(15,23,42,0.85);
+  border:1px solid rgba(5,150,105,0.4);
+  color:var(--emerald-lt);
+  animation:float-bob 3s ease-in-out infinite
+}
+
+.floating-el-2{
+  bottom:22%;left:5%;
+  padding:12px;
+  background:rgba(15,23,42,0.85);
+  border:1px solid rgba(5,150,105,0.3);
+  border-radius:12px;
+  color:var(--emerald-lt);
+  animation:float-bob 3.5s ease-in-out infinite;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.floating-el-2 svg{
+  width:28px;height:28px;
+  color:var(--emerald-lt);
+  filter:drop-shadow(0 0 6px rgba(5,150,105,0.5))
+}
+
+.floating-el-3{
+  bottom:12%;right:10%;
+  padding:7px 16px;
+  background:transparent;
+  border:1px solid rgba(5,150,105,0.3);
+  color:var(--g400);
+  font-size:.7rem;
+  animation:float-bob 4s ease-in-out infinite
+}
+
+.floating-el-4{
+  top:40%;left:3%;
+  width:28px;height:28px;
+  padding:0;
+  background:rgba(5,150,105,0.08);
+  border:1px solid rgba(5,150,105,0.2);
+  border-radius:4px;
+  animation:float-bob 4.5s ease-in-out infinite;
+  --rot:45deg
+}
+
+/* ============================================
+   MARQUEE
+   ============================================ */
+.marquee-section{
+  background:var(--dark);
+  border-top:1px solid rgba(5,150,105,0.1);
+  border-bottom:1px solid rgba(5,150,105,0.1);
+  padding:28px 0;
+  overflow:hidden;
+  position:relative
+}
+
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:marquee 20s linear infinite
+}
+
+.marquee-track:hover{animation-play-state:paused}
+
+@keyframes marquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+.marquee-word{
+  font-family:var(--fh);
+  font-size:clamp(2rem,3.5vw,3.5rem);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  -webkit-text-stroke:1.5px rgba(5,150,105,0.2);
+  color:transparent;
+  white-space:nowrap;
+  padding:0 12px;
+  transition:color .3s ease,-webkit-text-stroke .3s ease;
+  cursor:default
+}
+
+.marquee-word:hover{
+  color:var(--emerald);
+  -webkit-text-stroke:1.5px var(--emerald)
+}
+
+.marquee-sep{
+  font-size:clamp(1.2rem,2vw,2rem);
+  color:rgba(5,150,105,0.25);
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  line-height:1
+}
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services-header{text-align:center;margin-bottom:64px}
+.services-header .section-subtext{margin:0 auto}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px
+}
+
+.service-card{
+  position:relative;
+  padding:40px 32px;
+  background:var(--white);
+  border:1px solid var(--g200);
+  border-radius:12px;
+  transition:all var(--tm);
+  overflow:hidden
+}
+
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--emerald),var(--teal));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--tm)
+}
+
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 40px rgba(5,150,105,0.15);
+  border-color:transparent
+}
+
+.service-card:hover::before{transform:scaleX(1)}
+
+.service-icon{
+  width:56px;height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(5,150,105,.08);
+  border-radius:12px;
+  margin-bottom:24px;
+  transition:all var(--tm)
+}
+
+.service-card:hover .service-icon{background:var(--emerald)}
+
+.service-icon svg{
+  width:28px;height:28px;
+  color:var(--emerald);
+  transition:color var(--tm)
+}
+
+.service-card:hover .service-icon svg{color:var(--white)}
+
+.service-card h3{
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--g900);
+  margin-bottom:12px
+}
+
+.service-card p{
+  font-size:.95rem;
+  color:var(--g500);
+  line-height:1.7;
+  margin-bottom:24px
+}
+
+.service-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--fh);
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--emerald);
+  transition:gap var(--tf)
+}
+
+.service-link:hover{gap:10px}
+.service-link svg{width:16px;height:16px}
+
+/* ============================================
+   PROCESS
+   ============================================ */
+.process{position:relative;overflow:hidden}
+
+.process::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(5,150,105,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(5,150,105,.02) 1px,transparent 1px);
+  background-size:40px 40px
+}
+
+.process-header{text-align:center;margin-bottom:80px;position:relative}
+.process-header .section-heading{color:var(--white)}
+.process-header .section-subtext{margin:0 auto;color:var(--g400)}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  position:relative
+}
+
+.process-grid::before{
+  content:'';
+  position:absolute;
+  top:48px;
+  left:calc(16.67% + 20px);
+  right:calc(16.67% + 20px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(5,150,105,.3),rgba(5,150,105,.3),transparent)
+}
+
+.process-step{text-align:center}
+
+.process-num{
+  font-family:var(--fh);
+  font-size:4rem;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--emerald),var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+  margin-bottom:24px;
+  position:relative
+}
+
+.process-num::after{
+  content:'';
+  position:absolute;
+  bottom:-8px;
+  left:50%;
+  transform:translateX(-50%);
+  width:32px;height:2px;
+  background:var(--emerald);
+  opacity:.4
+}
+
+.process-step h3{
+  font-size:1.25rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:12px
+}
+
+.process-step p{
+  font-size:.95rem;
+  color:var(--g400);
+  line-height:1.7;
+  max-width:300px;
+  margin:0 auto
+}
+
+/* ============================================
+   WHY CHOOSE US
+   ============================================ */
+.why-us-header{text-align:center;margin-bottom:64px}
+.why-us-header .section-heading{color:var(--g900)}
+.why-us-header .section-subtext{margin:0 auto;color:var(--g500)}
+
+.why-us-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px
+}
+
+.why-us-item{
+  display:flex;
+  gap:20px;
+  padding:32px;
+  border-radius:12px;
+  transition:all var(--tm);
+  border:1px solid transparent
+}
+
+.why-us-item:hover{
+  background:var(--g100);
+  border-color:var(--g200)
+}
+
+.why-us-icon{
+  flex-shrink:0;
+  width:48px;height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(5,150,105,.08);
+  border-radius:10px
+}
+
+.why-us-icon svg{width:24px;height:24px;color:var(--emerald)}
+
+.why-us-text h3{
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--g900);
+  margin-bottom:8px
+}
+
+.why-us-text p{
+  font-size:.93rem;
+  color:var(--g500);
+  line-height:1.7
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials-header{text-align:center;margin-bottom:64px}
+.testimonials-header .section-heading{color:var(--g900)}
+
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px
+}
+
+.testimonial-card{
+  padding:40px 32px;
+  background:var(--white);
+  border:1px solid var(--g200);
+  border-radius:12px;
+  position:relative;
+  transition:all var(--tm)
+}
+
+.testimonial-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+  border-color:rgba(5,150,105,.2)
+}
+
+.testimonial-quote-mark{
+  font-family:var(--fh);
+  font-size:5rem;
+  font-weight:700;
+  line-height:1;
+  background:linear-gradient(135deg,var(--emerald),var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  position:absolute;
+  top:20px;left:28px;
+  opacity:.2
+}
+
+.testimonial-text{
+  font-size:1rem;
+  color:var(--g600);
+  line-height:1.8;
+  margin-bottom:24px;
+  font-style:italic;
+  position:relative
+}
+
+.testimonial-stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;color:#f59e0b}
+
+.testimonial-author{display:flex;align-items:center;gap:12px}
+
+.testimonial-avatar{
+  width:44px;height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--fh);
+  font-weight:700;
+  font-size:.9rem;
+  color:var(--white)
+}
+
+.testimonial-author-info h4{
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--g900)
+}
+
+.testimonial-author-info span{
+  font-size:.82rem;
+  color:var(--g500)
+}
+
+/* ============================================
+   TEAM (Blog card structure adapted)
+   ============================================ */
+.team{position:relative;overflow:hidden}
+
+.team-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:48px;
+  gap:24px
+}
+
+.team-header .section-heading{color:var(--white)}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px
+}
+
+.team-card{
+  background:var(--dark-card);
+  border-radius:12px;
+  overflow:hidden;
+  transition:all var(--tm);
+  border:1px solid rgba(255,255,255,.04)
+}
+
+.team-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(5,150,105,.2);
+  box-shadow:0 20px 40px rgba(0,0,0,.3)
+}
+
+.team-card-image{
+  height:200px;
+  position:relative;
+  overflow:hidden
+}
+
+.team-card-image-inner{
+  width:100%;height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform var(--ts)
+}
+
+.team-card:hover .team-card-image-inner{transform:scale(1.05)}
+
+.team-img-1{background:linear-gradient(135deg,rgba(5,150,105,.2),rgba(20,184,166,.1))}
+.team-img-2{background:linear-gradient(135deg,rgba(20,184,166,.2),rgba(5,150,105,.1))}
+.team-img-3{background:linear-gradient(135deg,rgba(5,150,105,.15),rgba(20,184,166,.15))}
+
+.team-card-image svg{
+  width:48px;height:48px;
+  color:var(--emerald-lt);
+  opacity:.6
+}
+
+.team-card-tag{
+  position:absolute;
+  top:16px;left:16px;
+  padding:4px 12px;
+  background:rgba(5,150,105,.9);
+  color:var(--white);
+  font-family:var(--fh);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  border-radius:4px
+}
+
+.team-card-body{padding:28px 24px}
+
+.team-card h3{
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:12px;
+  line-height:1.3;
+  transition:color var(--tf)
+}
+
+.team-card:hover h3{color:var(--emerald-lt)}
+
+.team-card p{
+  font-size:.9rem;
+  color:var(--g400);
+  line-height:1.7
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact{position:relative;overflow:hidden}
+
+.contact::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 50% 50% at 80% 20%,rgba(5,150,105,.06) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%,rgba(20,184,166,.04) 0%,transparent 70%)
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  position:relative
+}
+
+.contact-info h2{
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:20px
+}
+
+.contact-info>p{
+  font-size:1.05rem;
+  color:var(--g400);
+  line-height:1.7;
+  margin-bottom:40px
+}
+
+.contact-details{display:flex;flex-direction:column;gap:24px}
+
+.contact-detail{display:flex;align-items:flex-start;gap:16px}
+
+.contact-detail-icon{
+  width:44px;height:44px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(5,150,105,.1);
+  border-radius:10px
+}
+
+.contact-detail-icon svg{width:20px;height:20px;color:var(--emerald-lt)}
+
+.contact-detail-text h4{
+  font-family:var(--fh);
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:4px
+}
+
+.contact-detail-text p,
+.contact-detail-text a{
+  font-size:.93rem;
+  color:var(--g400);
+  line-height:1.6
+}
+
+.contact-detail-text a:hover{color:var(--emerald-lt)}
+
+/* Contact form */
+.contact-form{
+  background:var(--dark-card);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:40px
+}
+
+.contact-form h3{
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:28px
+}
+
+.form-group{position:relative;margin-bottom:24px}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:16px 16px 8px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;
+  color:var(--white);
+  font-size:.95rem;
+  transition:all var(--tf)
+}
+
+.form-group textarea{min-height:120px;resize:vertical}
+
+.form-group select{
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none
+}
+
+.form-group select option{
+  background:var(--dark-card);
+  color:var(--white)
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:var(--emerald);
+  box-shadow:0 0 0 3px rgba(5,150,105,.15)
+}
+
+.form-group label{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--g500);
+  font-size:.93rem;
+  transition:all var(--tf);
+  pointer-events:none
+}
+
+.form-group textarea~label{
+  top:20px;
+  transform:none
+}
+
+.form-group select~label{
+  top:4px;
+  transform:none;
+  font-size:.72rem;
+  color:var(--g400)
+}
+
+.form-group input:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:focus~label,
+.form-group textarea:not(:placeholder-shown)~label{
+  top:4px;
+  transform:none;
+  font-size:.72rem;
+  color:var(--emerald-lt)
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px
+}
+
+.contact-form .btn{
+  width:100%;
+  justify-content:center;
+  padding:16px;
+  font-size:1rem
+}
+
+.form-note{
+  font-size:.8rem;
+  color:var(--g500);
+  margin-top:12px;
+  text-align:center
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer{
+  background:#080d1a;
+  color:var(--g400);
+  padding:64px 0 0
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;
+  padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+
+.footer-about .logo{margin-bottom:20px}
+
+.footer-about p{
+  font-size:.9rem;
+  line-height:1.7;
+  color:var(--g500);
+  max-width:320px
+}
+
+.footer-social{display:flex;gap:12px;margin-top:24px}
+
+.footer-social a{
+  width:40px;height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  transition:all var(--tf)
+}
+
+.footer-social a:hover{
+  background:var(--emerald);
+  border-color:var(--emerald)
+}
+
+.footer-social svg{
+  width:18px;height:18px;
+  color:var(--g400);
+  transition:color var(--tf)
+}
+
+.footer-social a:hover svg{color:var(--white)}
+
+.footer-col h4{
+  font-family:var(--fh);
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:20px
+}
+
+.footer-col ul{display:flex;flex-direction:column;gap:12px}
+
+.footer-col a{
+  font-size:.88rem;
+  color:var(--g500);
+  transition:all var(--tf)
+}
+
+.footer-col a:hover{
+  color:var(--emerald-lt);
+  transform:translateX(4px)
+}
+
+.footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:24px 0;
+  font-size:.82rem;
+  color:var(--g600)
+}
+
+.footer-bottom-links{display:flex;gap:24px}
+.footer-bottom-links a:hover{color:var(--g400)}
+
+/* ============================================
+   ANIMATIONS & EFFECTS
+   ============================================ */
+.fade-in{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .6s ease,transform .6s ease
+}
+
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-delay-1{transition-delay:.1s}
+.fade-in-delay-2{transition-delay:.2s}
+.fade-in-delay-3{transition-delay:.3s}
+
+/* Noise overlay */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.03;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media(prefers-reduced-motion:reduce){
+  .fade-in{opacity:1;transform:none;transition:none}
+  .hero-shape-1,.hero-shape-2{animation:none}
+  .floating-el{animation:none}
+  .marquee-track{animation:none}
+  .hero-label-dot{animation:none}
+  .scroll-indicator{animation:none}
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media(max-width:1024px){
+  .services-grid,.process-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid::before{display:none}
+  .services-grid .service-card:last-child{grid-column:span 2;max-width:50%;margin:0 auto}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid .team-card:last-child{display:none}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid .testimonial-card:last-child{display:none}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-about{grid-column:span 2}
+}
+
+@media(max-width:768px){
+  .section-padding{padding:72px 0}
+  .nav-links,.nav .btn{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .hero-content{padding:100px 0 60px}
+  .hero h1{font-size:clamp(2.2rem,8vw,3rem)}
+  .hero-stats{flex-direction:column;gap:24px}
+  .hero-buttons{flex-direction:column}
+  .hero-buttons .btn{justify-content:center}
+  .services-grid{grid-template-columns:1fr}
+  .services-grid .service-card:last-child{grid-column:span 1;max-width:100%}
+  .process-grid{grid-template-columns:1fr;gap:48px}
+  .why-us-grid{grid-template-columns:1fr}
+  .team-header{flex-direction:column;align-items:flex-start}
+  .team-grid{grid-template-columns:1fr}
+  .team-grid .team-card:last-child{display:block}
+  .testimonials-grid{grid-template-columns:1fr}
+  .testimonials-grid .testimonial-card:last-child{display:block}
+  .contact-form{padding:28px}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-about{grid-column:span 1}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .scroll-indicator{display:none}
+  .hero-shape-1,.hero-shape-2{display:none}
+  .floating-el{display:none}
+}
+
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .hero h1{font-size:2rem}
+  .section-heading{font-size:1.7rem}
+  .process-num{font-size:3rem}
+  .why-us-item{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 2L36 10V24L20 38L4 24V10L20 2Z" stroke="#059669" stroke-width="1.5" fill="none"/>
+          <path d="M20 6L32 12V22L20 34L8 22V12L20 6Z" fill="rgba(5,150,105,0.1)"/>
+          <path d="M14 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#059669" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M17 13c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="#14b8a6" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <circle cx="15" cy="20" r="1.5" fill="#059669"/>
+          <circle cx="20" cy="22" r="1.5" fill="#059669"/>
+          <circle cx="25" cy="20" r="1.5" fill="#14b8a6" opacity="0.6"/>
+        </svg>
+        <span class="logo-text">DEAF STUDENT <span>SOLUTIONS</span></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <a href="#contact" class="btn btn-primary">Enquire Now</a>
+      </nav>
+      <button class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu (full-screen overlay, centered) -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#hero" class="nav-link">Home</a>
+  <a href="#services" class="nav-link">Services</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#team" class="nav-link">Team</a>
+  <a href="#contact" class="nav-link">Contact</a>
+  <a href="#contact" class="btn btn-primary">Enquire Now</a>
+</div>
+
+<main id="main-content">
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+<section class="hero" id="hero">
+  <div class="hero-gradient" aria-hidden="true"></div>
+  <div class="hero-shapes" aria-hidden="true">
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+    <div class="hero-shape hero-shape-3"></div>
+    <div class="hero-shape hero-shape-4"></div>
+  </div>
+
+  <div class="floating-el floating-el-1" aria-hidden="true">NRCPD Registered</div>
+  <div class="floating-el floating-el-2" aria-hidden="true">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M14 4c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6"/>
+      <circle cx="10" cy="19" r="1.5"/>
+      <circle cx="14" cy="21" r="1.5"/>
+      <circle cx="18" cy="19" r="1.5"/>
+    </svg>
+  </div>
+  <div class="floating-el floating-el-3" aria-hidden="true">Home of NMH</div>
+  <div class="floating-el floating-el-4" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="hero-label-dot"></span> Professional Deaf Student Support
+      </div>
+      <h1>EVERY STUDENT.<br><span class="accent">SUPPORTED.</span></h1>
+      <p class="hero-sub">Professional BSL interpreting, specialist support, and note-taking services for D/deaf and hard of hearing students in higher education. A one-stop solution for all your NMH provisioning needs.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Enquire Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#services" class="btn btn-outline-white">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">Specialist Services</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">NRCPD Registered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-indicator-line"></div>
+  </div>
+</section>
+
+<!-- =========================================
+     MARQUEE
+     ========================================= -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-word">BSL INTERPRETING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">NOTE TAKING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">SPECIALIST SUPPORT</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">DEAF AWARENESS</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">ADVOCACY</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">EVENT INTERPRETING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">EDUCATION</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">BSL INTERPRETING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">NOTE TAKING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">SPECIALIST SUPPORT</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">DEAF AWARENESS</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">ADVOCACY</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">EVENT INTERPRETING</span><span class="marquee-sep">&#9670;</span>
+    <span class="marquee-word">EDUCATION</span><span class="marquee-sep">&#9670;</span>
+  </div>
+</section>
+
+<!-- =========================================
+     SERVICES
+     ========================================= -->
+<section class="services section-white section-padding" id="services">
+  <div class="container">
+    <div class="services-header fade-in">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-heading">Comprehensive D/deaf<br>Student Support</h2>
+      <p class="section-subtext">From BSL interpreting to deaf awareness training, we provide the specialist services your students need to thrive in education.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 17a2 2 0 01-2 2H9l-4 4V7a2 2 0 012-2h14a2 2 0 012 2z"/>
+            <path d="M10 12h.01M14 12h.01M18 12h.01"/>
+          </svg>
+        </div>
+        <h3>BSL Interpreters</h3>
+        <p>Professional BSL/English interpreters who relay between deaf British Sign Language users and hearing people, ensuring full access to lectures, seminars, and tutorials.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 23v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/>
+            <circle cx="11" cy="9" r="4"/>
+            <path d="M22 10v6M25 13h-6"/>
+          </svg>
+        </div>
+        <h3>Specialist Support Professionals</h3>
+        <p>One-to-one specialist tutoring, result interpretation, enriched language input, and subject-specific support tailored to each student's individual needs.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 4H8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V10z"/>
+            <polyline points="16 4 16 10 22 10"/>
+            <line x1="18" y1="15" x2="10" y2="15"/>
+            <line x1="18" y1="19" x2="10" y2="19"/>
+            <polyline points="12 11 11 11 10 11"/>
+          </svg>
+        </div>
+        <h3>Specialist Note Taking</h3>
+        <p>Comprehensive, non-verbatim lecture records delivered live via specialist software, or through professional typed and handwritten notes in your preferred format.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 23v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/>
+            <circle cx="11" cy="9" r="4"/>
+            <path d="M25 23v-2a4 4 0 00-3-3.87"/>
+            <path d="M18 5.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3>Deaf Awareness Training</h3>
+        <p>One-day courses for university staff covering D/deaf culture, history, communication methods, and foundational sign language skills to boost confidence and understanding.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 24s8-4 8-10V7l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M11 14l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Advocacy &amp; Information</h3>
+        <p>Comprehensive guidance on available support options, from initial enquiry through every stage of student life, ensuring deaf students understand all assistance available to them.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="6" width="18" height="18" rx="2" ry="2"/>
+            <line x1="18" y1="4" x2="18" y2="8"/>
+            <line x1="10" y1="4" x2="10" y2="8"/>
+            <line x1="5" y1="12" x2="23" y2="12"/>
+            <path d="M14 16l-2 2 2 2"/>
+            <path d="M18 16l-2 2 2 2"/>
+          </svg>
+        </div>
+        <h3>Event Interpreting</h3>
+        <p>Professional BSL interpreters for university events, conferences, graduation ceremonies, open days, and ambassador training sessions.</p>
+        <a href="#contact" class="service-link">Enquire now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     PROCESS
+     ========================================= -->
+<section class="process section-dark section-padding" id="process">
+  <div class="container">
+    <div class="process-header fade-in">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-heading">Three Simple Steps to<br>Arrange Support</h2>
+      <p class="section-subtext">We have removed the complexity from arranging deaf student support. Here is how we work together.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step fade-in fade-in-delay-1">
+        <div class="process-num">01</div>
+        <h3>Enquire</h3>
+        <p>Contact us with your student's needs. We discuss the support required, timetable, and any specific requirements.</p>
+      </div>
+      <div class="process-step fade-in fade-in-delay-2">
+        <div class="process-num">02</div>
+        <h3>Match</h3>
+        <p>We match each student with qualified professionals who have the right subject specialism and communication skills.</p>
+      </div>
+      <div class="process-step fade-in fade-in-delay-3">
+        <div class="process-num">03</div>
+        <h3>Support</h3>
+        <p>Our team delivers consistent, high-quality support throughout the academic year, adapting as needs evolve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     WHY CHOOSE US
+     ========================================= -->
+<section class="section-white section-padding" id="about">
+  <div class="container">
+    <div class="why-us-header fade-in">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-heading">Built on Trust.<br>Driven by Expertise.</h2>
+      <p class="section-subtext">Over a decade of experience supporting D/deaf and hard of hearing students in higher education.</p>
+    </div>
+
+    <div class="why-us-grid">
+      <div class="why-us-item fade-in fade-in-delay-1">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>NRCPD Registered</h3>
+          <p>All our interpreters are registered with the National Registers of Communication Professionals working with Deaf and Deafblind People, guaranteeing quality and accountability.</p>
+        </div>
+      </div>
+
+      <div class="why-us-item fade-in fade-in-delay-2">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>10+ Years Experience</h3>
+          <p>Led by Daniel Rudd, with over a decade of experience in the Deaf community and postgraduate qualifications in BSL/English interpreting from Leeds and Lancashire.</p>
+        </div>
+      </div>
+
+      <div class="why-us-item fade-in fade-in-delay-1">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>Home of NMH</h3>
+          <p>We are specialists in Non-Medical Helper support, providing the full range of services D/deaf and hard of hearing students need to succeed in education.</p>
+        </div>
+      </div>
+
+      <div class="why-us-item fade-in fade-in-delay-2">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <path d="M9 15l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>Qualified Professionals</h3>
+          <p>Our team holds postgraduate qualifications from the University of Leeds and University of Central Lancashire, with VLP membership and ongoing professional development.</p>
+        </div>
+      </div>
+
+      <div class="why-us-item fade-in fade-in-delay-1">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M16 12l-4-4-4 4"/>
+            <path d="M12 16V8"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>One-Stop Solution</h3>
+          <p>BSL interpreting, specialist support, note-taking, deaf awareness training, advocacy, and event interpreting &mdash; all from a single, trusted provider.</p>
+        </div>
+      </div>
+
+      <div class="why-us-item fade-in fade-in-delay-2">
+        <div class="why-us-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <div class="why-us-text">
+          <h3>Student-Centred Approach</h3>
+          <p>We tailor our support to each student's individual needs, ensuring they can access education fully, gain knowledge and skills, and realise their future aspirations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     TESTIMONIALS
+     ========================================= -->
+<section class="section-white section-padding" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-in">
+      <span class="section-label">Feedback</span>
+      <h2 class="section-heading">What People Say<br>About Us</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testimonial-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">I feel that I have been able to achieve the best possible results on my course thanks to the fact that the support I have received has been almost constant. The interpreter consistency and deaf awareness education has been invaluable.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#059669,#14b8a6)">US</div>
+          <div class="testimonial-author-info">
+            <h4>University Student</h4>
+            <span>BSL &amp; Note Taking Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testimonial-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">We have found Deaf Student Solutions to be helpful and accommodating. They are willing to negotiate with the University to meet the needs of our students at a reasonable cost. A reliable and professional partner.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#14b8a6,#059669)">SL</div>
+          <div class="testimonial-author-info">
+            <h4>Senior Learning Support Adviser</h4>
+            <span>University Partner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-3">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testimonial-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">The information was delivered in a relatable way and easy to understand. The proactive activities were really good. Should be longer! I could have sat there all afternoon. It was very good, I really enjoyed it. 10/10!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#059669,#0f766e)">SM</div>
+          <div class="testimonial-author-info">
+            <h4>University Staff Member</h4>
+            <span>Deaf Awareness Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     MEET THE TEAM (Blog card structure)
+     ========================================= -->
+<section class="team section-dark section-padding" id="team">
+  <div class="container">
+    <div class="team-header">
+      <div>
+        <span class="section-label fade-in">Our Team</span>
+        <h2 class="section-heading fade-in">The People Behind<br>Your Support</h2>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card fade-in fade-in-delay-1">
+        <div class="team-card-image">
+          <div class="team-card-image-inner team-img-1">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M36 38v-4a8 8 0 00-8-8H20a8 8 0 00-8 8v4"/>
+              <circle cx="24" cy="16" r="6"/>
+            </svg>
+          </div>
+          <span class="team-card-tag">Director</span>
+        </div>
+        <div class="team-card-body">
+          <h3>Daniel Rudd</h3>
+          <p>Over 10 years in the Deaf community. PG Cert in BSL/English from the University of Leeds, PG Dip in BSL/English Interpreting from the University of Central Lancashire. NRCPD registered and VLP member.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-2">
+        <div class="team-card-image">
+          <div class="team-card-image-inner team-img-2">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M36 38v-4a8 8 0 00-8-8H20a8 8 0 00-8 8v4"/>
+              <circle cx="24" cy="16" r="6"/>
+            </svg>
+          </div>
+          <span class="team-card-tag">Office Manager</span>
+        </div>
+        <div class="team-card-body">
+          <h3>Becky Rudd</h3>
+          <p>Manages day-to-day operations at Deaf Student Solutions, ensuring seamless coordination between students, universities, and our support professionals.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-in fade-in-delay-3">
+        <div class="team-card-image">
+          <div class="team-card-image-inner team-img-3">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M36 38v-4a8 8 0 00-8-8H20a8 8 0 00-8 8v4"/>
+              <circle cx="24" cy="16" r="6"/>
+            </svg>
+          </div>
+          <span class="team-card-tag">Finance Administrator</span>
+        </div>
+        <div class="team-card-body">
+          <h3>Sarah Mercer</h3>
+          <p>Handles all financial administration, invoicing, and accounts, keeping everything running smoothly behind the scenes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     CONTACT
+     ========================================= -->
+<section class="contact section-dark section-padding" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <span class="section-label">Get in Touch</span>
+        <h2>Make an Enquiry<br>Today</h2>
+        <p>Whether you need BSL interpreters, specialist support, note-taking, or deaf awareness training, our team is ready to discuss how we can support your students.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Call Us</h4>
+              <a href="tel:08006226268">0800 622 6268</a> / <a href="tel:07376081417">07376 081 417</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Email Us</h4>
+              <a href="mailto:admin@deafstudentsolutions.com">admin@deafstudentsolutions.com</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Office Hours</h4>
+              <p>Mon - Fri: 09:00 - 17:00<br>FaceTime &amp; Skype available by appointment</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Address</h4>
+              <p>379 Pensby Road, Pensby, CH61 9NF</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="23 7 16 12 23 17 23 7"/>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Video Calls</h4>
+              <p>FaceTime &amp; Skype available by appointment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-in">
+        <h3>Send Us an Enquiry</h3>
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="firstName" placeholder=" " required>
+              <label for="firstName">First Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="lastName" placeholder=" " required>
+              <label for="lastName">Last Name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder=" ">
+            <label for="phone">Phone Number</label>
+          </div>
+          <div class="form-group">
+            <select id="service" required>
+              <option value="" disabled selected></option>
+              <option>BSL Interpreting</option>
+              <option>Specialist Support Professional</option>
+              <option>Note Taking</option>
+              <option>Deaf Awareness Training</option>
+              <option>Event Interpreting</option>
+              <option>Advocacy &amp; Information</option>
+              <option>Other / Not Sure</option>
+            </select>
+            <label for="service">Service Required</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="4" placeholder=" "></textarea>
+            <label for="message">Tell Us About the Student's Needs</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Enquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <p class="form-note">Your information is secure and will never be shared. We respond within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#" class="logo">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36" aria-hidden="true">
+            <path d="M20 2L36 10V24L20 38L4 24V10L20 2Z" stroke="#059669" stroke-width="1.5" fill="none"/>
+            <path d="M20 6L32 12V22L20 34L8 22V12L20 6Z" fill="rgba(5,150,105,0.1)"/>
+            <path d="M14 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#059669" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="15" cy="20" r="1.5" fill="#059669"/>
+            <circle cx="20" cy="22" r="1.5" fill="#059669"/>
+            <circle cx="25" cy="20" r="1.5" fill="#14b8a6" opacity="0.6"/>
+          </svg>
+          <span class="logo-text">DEAF STUDENT <span>SOLUTIONS</span></span>
+        </a>
+        <p>A one-stop solution for all D/deaf and hard of hearing student provisioning in educational settings. NRCPD registered professionals across the UK.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          </a>
+          <a href="#" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">BSL Interpreters</a></li>
+          <li><a href="#services">Specialist Support (SSP)</a></li>
+          <li><a href="#services">Note Taking</a></li>
+          <li><a href="#services">Deaf Awareness Training</a></li>
+          <li><a href="#services">Advocacy &amp; Information</a></li>
+          <li><a href="#services">Event Interpreting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#testimonials">Feedback</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:08006226268">0800 622 6268</a></li>
+          <li><a href="tel:07376081417">07376 081 417</a></li>
+          <li><a href="mailto:admin@deafstudentsolutions.com">admin@deafstudentsolutions.com</a></li>
+          <li><a href="#">Mon-Fri: 9am-5pm</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Deaf Student Solutions Ltd. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cancellation Policy</a>
+        <a href="#">Complaints Procedure</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+<script>
+!function(){
+  // Header scroll effect
+  var h=document.getElementById("header");
+  window.addEventListener("scroll",function(){
+    h.classList.toggle("scrolled",window.pageYOffset>50);
+  },{passive:true});
+
+  // Hamburger menu
+  var b=document.getElementById("hamburger"),
+      m=document.getElementById("mobileMenu");
+
+  function toggleMenu(){
+    b.classList.toggle("active");
+    m.classList.toggle("open");
+    document.body.style.overflow=m.classList.contains("open")?"hidden":"";
+  }
+
+  b.addEventListener("click",toggleMenu);
+  b.addEventListener("keydown",function(e){
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+
+  // Close mobile menu on link click
+  var mLinks=document.querySelectorAll(".mobile-menu .nav-link,.mobile-menu .btn");
+  for(var i=0;i<mLinks.length;i++){
+    mLinks[i].addEventListener("click",function(){
+      b.classList.remove("active");
+      m.classList.remove("open");
+      document.body.style.overflow="";
+    });
+  }
+
+  // Fade-in on scroll (IntersectionObserver)
+  var fadeEls=document.querySelectorAll(".fade-in");
+  var observer=new IntersectionObserver(function(entries){
+    for(var j=0;j<entries.length;j++){
+      if(entries[j].isIntersecting){
+        entries[j].target.classList.add("visible");
+        observer.unobserve(entries[j].target);
+      }
+    }
+  },{rootMargin:"0px 0px -60px 0px",threshold:.1});
+
+  for(var k=0;k<fadeEls.length;k++){
+    observer.observe(fadeEls[k]);
+  }
+
+  // Smooth scroll for anchor links
+  var anchors=document.querySelectorAll('a[href^="#"]');
+  for(var n=0;n<anchors.length;n++){
+    anchors[n].addEventListener("click",function(e){
+      var d=this.getAttribute("href");
+      if(d!=="#"){
+        var el=document.querySelector(d);
+        if(el){
+          e.preventDefault();
+          window.scrollTo({
+            top:el.getBoundingClientRect().top+window.pageYOffset-h.offsetHeight,
+            behavior:"smooth"
+          });
+        }
+      }
+    });
+  }
+}();
+
+// Form submission handler (mailto)
+function handleSubmit(e){
+  e.preventDefault();
+  var firstName=document.getElementById("firstName").value;
+  var lastName=document.getElementById("lastName").value;
+  var email=document.getElementById("email").value;
+  var phone=document.getElementById("phone").value;
+  var service=document.getElementById("service").value;
+  var message=document.getElementById("message").value;
+
+  var subject="Website Enquiry from "+firstName+" "+lastName;
+  var body="Name: "+firstName+" "+lastName+"\n"
+          +"Email: "+email+"\n"
+          +"Phone: "+phone+"\n"
+          +"Service: "+service+"\n\n"
+          +"Message:\n"+message;
+
+  window.location.href="mailto:admin@deafstudentsolutions.com"
+    +"?subject="+encodeURIComponent(subject)
+    +"&body="+encodeURIComponent(body);
+
+  return false;
+}
+</script>
+</body>
+</html>
